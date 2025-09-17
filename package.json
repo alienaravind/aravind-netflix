@@ -1,0 +1,27 @@
+{
+  "name": "aravind-netflix",
+  "version": "1.0.0",
+  "description": "A clone of Netflix app",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "React",
+    "Js",
+    "Tailwind",
+    "Firebase"
+  ],
+  "author": "Aravind Krishnan",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.13",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^6.22.3",
+    "tailwindcss": "^4.1.13"
+  }
+}
