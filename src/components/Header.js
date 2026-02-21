@@ -3,8 +3,8 @@ import { NETFLIX_LOGO } from "../utils/constants";
 
 const Header = () => {
   return (
-    <div>
-      <img className="absolute w-40 left-80 top-13" src={NETFLIX_LOGO} />
+    <div className="flex justify-between w-screen bg-black h-30">
+      <img className="absolute left-30 top-7 lg:w-50" src={NETFLIX_LOGO} />
     </div>
   );
 };
