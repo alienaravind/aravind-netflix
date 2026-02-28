@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
-import Header from "./Header";
-import { NETFLIX_BG } from "../utils/constants";
+import { NETFLIX_BG, NETFLIX_LOGO } from "../utils/constants";
 import { checkValidData } from "../utils/validation";
 import {
   createUserWithEmailAndPassword,
@@ -8,12 +7,11 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/authentication";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import useAuthentication from "./hooks/useAuthentication";
 
 const Login = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const name = useRef(null);
@@ -21,6 +19,8 @@ const Login = () => {
   const password = useRef(null);
   const [signInForm, setSignInForm] = useState(true);
   const [errMessage, setErrorMessage] = useState(null);
+
+  useAuthentication();
 
   const handleOnClick = () => {
     const flag = checkValidData(email.current.value, password.current.value);
@@ -48,7 +48,6 @@ const Login = () => {
                   email: email,
                 }),
               );
-              navigate("/browse");
             })
             .catch((error) => {
               const errorCode = error.code;
@@ -71,7 +70,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -91,7 +89,9 @@ const Login = () => {
         <img src={NETFLIX_BG} />
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
-      <Header />
+      <div className="flex justify-between w-screen bg-black h-30">
+        <img className="absolute left-30 top-7 lg:w-50" src={NETFLIX_LOGO} />
+      </div>
       <form
         className={`w-4/12 ${
           signInForm ? "h-105" : "h-120 my-[120]"
