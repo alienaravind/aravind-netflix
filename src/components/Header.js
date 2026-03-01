@@ -17,7 +17,7 @@ const Header = () => {
   useAuthentication();
   return (
     <div>
-      <div className="fixed top-0 left-0 w-full h-18 bg-linear-to-b from-black/90 to-black/5 backdrop-blur-xs">
+      <div className="z-1 fixed top-0 left-0 w-full h-18 bg-linear-to-b from-black/90 to-black/5 backdrop-blur-xs">
         <img
           className="absolute w-28 h-12 left-11 top-3 cursor-pointer"
           src={NETFLIX_LOGO}
@@ -34,7 +34,7 @@ const Header = () => {
             ))}
           </ul>
         </div>
-        <h1 className="fixed top-7 right-34 text-white text-[14px] font-semibold">
+        <h1 className="fixed top-7 right-34 text-white text-[14px] font-semibold cursor-pointer">
           Children
         </h1>
         <div>

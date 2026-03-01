@@ -3,8 +3,11 @@ export const NETFLIX_LOGO =
 export const NETFLIX_BG =
   "https://assets.nflxext.com/ffe/siteui/vlv3/0b0dad79-ad4d-42b7-b779-8518da389976/web/IN-en-20250908-TRIFECTA-perspective_0647b106-80e1-4d25-9649-63099752b49a_large.jpg";
 
-export const URL =
-  "https://api.themoviedb.org/3/movie/502356/videos?language=en-US";
+export const NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing";
+export const POPULAR_URL = "https://api.themoviedb.org/3/movie/popular";
+export const TOP_RATED_URL = "https://api.themoviedb.org/3/movie/top_rated";
+export const UPCOMING_URL = "https://api.themoviedb.org/3/movie/upcoming";
+
 export const OPTIONS = {
   method: "GET",
   headers: {
@@ -14,9 +17,8 @@ export const OPTIONS = {
   },
 };
 
-export const TITLE_URL =
-  "https://api.themoviedb.org/3/movie/502356?language=en-US";
-export const TITLE_OPTIONS = {
+export const VIDEO_URL = "https://api.themoviedb.org/3/movie/1290821/videos";
+export const VIDEO_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
@@ -24,3 +26,5 @@ export const TITLE_OPTIONS = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYTgxNDZlMWM0M2QwY2YzOGIyZjc1MDYxYWFhZGYzNSIsIm5iZiI6MTc3MTg3NjAzNi4zMzQsInN1YiI6IjY5OWNhZWM0MDE0NTE5MWIwZTZhNDM0ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.V4ptJaqL03afIryrxJ6gZrwhUTqCog2Jw4feaUzB78Q",
   },
 };
+
+export const NOW_PLAYING_CARD_URL = "https://image.tmdb.org/t/p/w500";

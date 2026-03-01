@@ -9,7 +9,7 @@ const useAuthentication = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         //User is signed in
         const { uid, displayName, email, photoURL } = user;
@@ -28,6 +28,7 @@ const useAuthentication = () => {
         navigate("/");
       }
     });
+    return () => unsubscribe();
   }, []);
 };
 

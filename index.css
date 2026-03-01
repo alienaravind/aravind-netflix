@@ -5,3 +5,7 @@
 body {
   font-family: "Inter", sans-serif;
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+}

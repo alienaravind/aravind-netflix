@@ -1,20 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import useNowPlayingTitle from "./hooks/useNowPlayingTitle";
 
-const MovieTitle = () => {
-  useNowPlayingTitle();
-  const title = useSelector((store) => store.movie?.titleDetails);
-
+const MovieTitle = ({ original_title, overview }) => {
   return (
-    <div className="fixed bottom-50 left-15 flex flex-col gap-4">
-      <h1 className="w-1/4 text-4xl font-bold text-white">
-        {title.original_title}
-      </h1>
+    <div className="absolute bottom-50 left-15 flex flex-col gap-4 z-1">
+      <h1 className="w-1/4 text-4xl font-bold text-white">{original_title}</h1>
 
-      <p className="w-1/4 text-white text-sm leading-relaxed">
-        {title?.overview}
-      </p>
+      <p className="w-1/4 text-white text-sm leading-relaxed">{overview}</p>
 
       <div className="flex gap-3 font-semibold">
         <button

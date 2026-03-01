@@ -1,14 +1,13 @@
 import React from "react";
-import BrowseBody from "./BrowseBody";
 import Header from "./Header";
-import MovieTitle from "./MovieTitle";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
   return (
     <div>
-      <BrowseBody />
-      <Header />
-      <MovieTitle />
+      <MainContainer />
+      <SecondaryContainer />
     </div>
   );
 };
