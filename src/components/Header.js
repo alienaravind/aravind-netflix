@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import ProfileDropDown from "./ProfileDropDown";
-import { NETFLIX_LOGO } from "../utils/constants";
+import { LANGUAGES, NETFLIX_LOGO } from "../utils/constants";
 import useAuthentication from "./hooks/useAuthentication";
+import { toggleSearchActive } from "../utils/movieSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { changeLanguage } from "../utils/configSlice";
 const Header = () => {
+  const dispatch = useDispatch();
   const [hoverActive, setHoverActive] = useState(false);
   const [hoverActiveComp, setHoverActiveComp] = useState(false);
   const leftItems = [
@@ -14,7 +18,16 @@ const Header = () => {
     "My List",
     "Browse by Languages",
   ];
+  const checkActive = useSelector((store) => store.movie.searchActive);
+
   useAuthentication();
+  const handleToggleAISearch = () => {
+    dispatch(toggleSearchActive());
+  };
+  const handleToggleLanguage = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
+
   return (
     <div>
       <div className="z-1 fixed top-0 left-0 w-full h-18 bg-linear-to-b from-black/90 to-black/5 backdrop-blur-xs">
@@ -34,7 +47,25 @@ const Header = () => {
             ))}
           </ul>
         </div>
-        <h1 className="fixed top-7 right-34 text-white text-[14px] font-semibold cursor-pointer">
+        {checkActive && (
+          <select
+            onChange={handleToggleLanguage}
+            className="fixed top-7 right-80 rounded-md bg-gray-950 text-white w-20 cursor-pointer border-2 border-black"
+          >
+            {LANGUAGES.map((lang) => (
+              <option key={lang.identifier} value={lang.identifier}>
+                {lang.name}
+              </option>
+            ))}
+          </select>
+        )}
+        <button
+          onClick={handleToggleAISearch}
+          className="fixed top-7 px-4 rounded-lg cursor-pointer hover:text-white duration-200 ease-in bg-green-400 right-50 text-black"
+        >
+          {checkActive ? "Home" : "AI Search"}
+        </button>
+        <h1 className="fixed top-7 right-34  hover:text-gray-400 duration-200 ease-in text-white text-[14px] font-semibold cursor-pointer">
           Children
         </h1>
         <div>

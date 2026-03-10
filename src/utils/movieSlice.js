@@ -8,6 +8,7 @@ const movieSlice = createSlice({
     topRatedMovies: null,
     upcomingMovies: null,
     backGroundVideo: null,
+    searchActive: false,
   },
 
   reducers: {
@@ -26,6 +27,9 @@ const movieSlice = createSlice({
     addVideoBackground: (state, action) => {
       state.backGroundVideo = action.payload;
     },
+    toggleSearchActive: (state) => {
+      state.searchActive = !state.searchActive;
+    },
   },
 });
 
@@ -35,5 +39,6 @@ export const {
   addPopularMovies,
   addTopRatedMovies,
   addUpcomingMovies,
+  toggleSearchActive,
 } = movieSlice.actions;
 export default movieSlice.reducer;

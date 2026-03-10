@@ -17,7 +17,7 @@ export const OPTIONS = {
   },
 };
 
-export const VIDEO_URL = "https://api.themoviedb.org/3/movie/1290821/videos";
+export const VIDEO_URL = "https://api.themoviedb.org/3/movie/680493/videos";
 export const VIDEO_OPTIONS = {
   method: "GET",
   headers: {
@@ -27,4 +27,13 @@ export const VIDEO_OPTIONS = {
   },
 };
 
+export const LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "hin", name: "Hindi" },
+  { identifier: "tam", name: "Tamil" },
+];
+
 export const NOW_PLAYING_CARD_URL = "https://image.tmdb.org/t/p/w500";
+
+export const OPENAI_KEY =
+  "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";

@@ -4,7 +4,6 @@ import MovieBackground from "./MovieBackground";
 import useNowPlayingMovies from "./hooks/useNowPlayingMovies";
 import useBackgroundVideo from "./hooks/useBackgroundVideo";
 import { useSelector } from "react-redux";
-import Header from "./Header";
 import usePopularMovies from "./hooks/usePopularMovies";
 import useTopRatedMovies from "./hooks/useTopRatedMovies";
 import useUpcomingMovies from "./hooks/useUpcomingMovies";
@@ -30,7 +29,6 @@ const MainContainer = () => {
 
   return (
     <div>
-      <Header />
       <MovieTitle original_title={original_title} overview={overview} />
       <MovieBackground videoKey={key} />
     </div>
