@@ -17,11 +17,13 @@ const MainContainer = () => {
 
   const title = useSelector((store) => store.movie?.nowPlayingMovies);
   const video = useSelector((store) => store.movie?.backGroundVideo);
+
   if (!title || !video) return null;
 
   const filterMovie = title?.find((title) => title.id == video?.id);
+  console.log("Filtered movie:", filterMovie);
 
-  const background = video.results ? video.results[0] : video.results[1];
+  const background = video?.results ? video?.results[0] : video?.results[1];
 
   const { original_title, overview } = filterMovie;
 

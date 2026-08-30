@@ -5,7 +5,7 @@ import lang from "../utils/languageConstants";
 const GptSearchBar = () => {
   const translate = useSelector((store) => store.config.lang);
   const searchText = useRef();
-  console.log(searchText);
+  console.log(translate);
   return (
     <div>
       <form

@@ -1,6 +1,7 @@
 import React from "react";
 import GptSearchBar from "./GptSearchBar";
 import { NETFLIX_BG } from "../utils/constants";
+// import GptMovieSuggestions from "./GptMovieSuggestions";
 
 const GptSearch = () => {
   return (
@@ -9,6 +10,8 @@ const GptSearch = () => {
         <img className="min-h-screen" alt="netflix-bg" src={NETFLIX_BG} />
       </div>
       <GptSearchBar />
+      {/* <GptMovieSuggestions /> */}
+
     </div>
   );
 };
