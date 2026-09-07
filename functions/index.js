@@ -9,7 +9,11 @@ const openaiApiKey = defineSecret("OPENAI_API_KEY");
 exports.openaiConnection = onRequest(
     {
       secrets: [openaiApiKey],
-      cors: ["http://localhost:5173"],
+      cors: [
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "https://aravind-netflix.vercel.app",
+      ],
       invoker: "public",
     },
     async (req, res) => {
