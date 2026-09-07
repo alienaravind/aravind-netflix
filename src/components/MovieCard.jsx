@@ -2,6 +2,9 @@ import React from "react";
 import { NOW_PLAYING_CARD_URL } from "../utils/constants";
 
 const MovieCard = ({ posterPath }) => {
+  if (!posterPath) {
+    return null;
+  }
   return (
     <div className="min-w-40 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:z-30">
       <img

@@ -9,7 +9,8 @@ const openaiApiKey = defineSecret("OPENAI_API_KEY");
 exports.openaiConnection = onRequest(
     {
       secrets: [openaiApiKey],
-      cors: true,
+      cors: ["http://localhost:5173"],
+      invoker: "public",
     },
     async (req, res) => {
       try {
@@ -87,9 +88,7 @@ exports.tmdbConnection = onRequest(
         );
 
         if (!response.ok) {
-          throw new Error(
-              `TMDB request failed with status ${response.status}`,
-          );
+          throw new Error(`TMDB request failed with status ${response.status}`);
         }
 
         const data = await response.json();
@@ -152,9 +151,7 @@ exports.tmdbvideoconnection = onRequest(
         );
 
         if (!response.ok) {
-          throw new Error(
-              `TMDB request failed with status ${response.status}`,
-          );
+          throw new Error(`TMDB request failed with status ${response.status}`);
         }
 
         const data = await response.json();
@@ -169,6 +166,57 @@ exports.tmdbvideoconnection = onRequest(
         return res.status(500).json({
           success: false,
           message: "TMDB video request failed",
+        });
+      }
+    },
+);
+
+exports.searchmovieswithai = onRequest(
+    {
+      secrets: [tmdbApiKey],
+      cors: true,
+    },
+    async (req, res) => {
+      try {
+        const {movieName} = req.body;
+
+        if (!movieName) {
+          return res.status(400).json({
+            success: false,
+            message: "Movie name is required",
+          });
+        }
+
+        const response = await fetch(
+            `https://api.themoviedb.org/3/search/movie?api_key=${tmdbApiKey.value()}&query=${encodeURIComponent(movieName.trim())}&include_adult=false&language=en-US&page=1`,
+            {
+              method: "GET",
+              headers: {
+                accept: "application/json",
+              },
+            },
+        );
+
+        if (!response.ok) {
+          const errorText = await response.text();
+
+          throw new Error(
+              `TMDB request failed: ${response.status} - ${errorText}`,
+          );
+        }
+
+        const data = await response.json();
+
+        return res.status(200).json({
+          success: true,
+          data: data,
+        });
+      } catch (error) {
+        logger.error("Movie search failed", error);
+
+        return res.status(500).json({
+          success: false,
+          message: "Movie search failed",
         });
       }
     },

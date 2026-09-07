@@ -84,63 +84,188 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div className="absolute">
-        <img src={NETFLIX_BG} />
+    <div className="min-h-screen w-full">
+      {/* Background */}
+      <div className="fixed inset-0 -z-10">
+        <img
+          className="w-full h-full object-cover"
+          src={NETFLIX_BG}
+          alt="Netflix background"
+        />
+
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
-      <div className="flex justify-between w-screen bg-black h-30">
-        <img className="absolute left-30 top-7 lg:w-50" src={NETFLIX_LOGO} />
+
+      {/* Netflix Logo */}
+      <div className="absolute top-5 left-25 md:top-0 md:left-0 w-full">
+        <img
+          className="
+          w-52
+          sm:w-40
+          md:w-48
+          mt-6
+          ml-6
+          md:mt-5
+          md:ml-10
+        "
+          src={NETFLIX_LOGO}
+          alt="Netflix"
+        />
       </div>
+
+      {/* Login Form */}
       <form
-        className={`w-4/12 ${
-          signInForm ? "h-105" : "h-120 my-[120]"
-        } rounded-lg absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white opacity-70`}
+        className="
+        absolute
+        top-1/2
+        left-1/2
+        -translate-x-1/2
+        -translate-y-1/2
+
+        w-[calc(100%-32px)]
+        max-w-md
+
+        p-6
+        sm:p-8
+        md:p-10
+
+        rounded-lg
+        bg-black/75
+        text-white
+      "
         onSubmit={(e) => e.preventDefault()}
       >
-        <h1 className="text-2xl mx-1 mb-5 font-bold text-center">
+        <h1
+          className="
+        text-lg
+        sm:text-xl
+        md:text-2xl
+        mb-5
+        font-bold
+        text-center
+      "
+        >
           Welcome to Aravind's Netflix
         </h1>
-        <h1 className="text-4xl mx-1 mb-2 font-bold">
+
+        <h1
+          className="
+        text-3xl
+        sm:text-4xl
+        mb-4
+        font-bold
+      "
+        >
           {signInForm ? "Sign In" : "Sign Up"}
         </h1>
+
         {!signInForm && (
           <input
             ref={name}
             type="text"
             placeholder="Name"
-            className=" w-full p-2 m-2 mx-1 border mb-3 border-gray-500 rounded-md hover:ring-1 ring-white"
+            className="
+            w-full
+            p-3
+            mb-3
+            bg-transparent
+            border
+            border-gray-500
+            rounded-md
+            outline-none
+            focus:ring-1
+            focus:ring-white
+          "
           />
         )}
+
         <input
           ref={email}
-          type="text"
+          type="email"
           placeholder="Email Address"
-          className=" w-full p-2 m-2 mx-1 border mb-3 border-gray-500 rounded-md hover:ring-1 ring-white"
+          className="
+          w-full
+          p-3
+          mb-3
+          bg-transparent
+          border
+          border-gray-500
+          rounded-md
+          outline-none
+          focus:ring-1
+          focus:ring-white
+        "
         />
+
         <input
           ref={password}
           type="password"
           placeholder="Password"
-          className=" w-full p-2 m-2 mx-1 border mb-3 border-gray-500 rounded-md hover:ring-1 ring-white"
+          className="
+          w-full
+          p-3
+          mb-3
+          bg-transparent
+          border
+          border-gray-500
+          rounded-md
+          outline-none
+          focus:ring-1
+          focus:ring-white
+        "
         />
-        {<p className="mb-4 text-red-600 font-bold text-1xl">{errMessage}</p>}
+
+        {errMessage && (
+          <p
+            className="
+          mb-4
+          text-sm
+          sm:text-base
+          text-red-500
+          font-bold
+        "
+          >
+            {errMessage}
+          </p>
+        )}
+
         <button
           onClick={handleOnClick}
           type="submit"
-          className="mx-1 bg-red-600 text-bold rounded-lg w-full p-2 hover:bg-red-700 cursor-pointer"
+          className="
+          w-full
+          p-3
+          mt-2
+          bg-red-600
+          rounded-md
+          font-bold
+          hover:bg-red-700
+          cursor-pointer
+        "
         >
           {signInForm ? "Sign In" : "Sign Up"}
         </button>
-        <h1 className=" mx-1 my-4 text-white">
+
+        <p
+          className="
+        mt-5
+        text-sm
+        sm:text-base
+        text-white
+      "
+        >
           {signInForm ? "New to Netflix?" : "Existing User?"}{" "}
           <span
             onClick={handleFormToggle}
-            className="font-bold hover:underline cursor-pointer"
+            className="
+            font-bold
+            hover:underline
+            cursor-pointer
+          "
           >
             {signInForm ? "Sign up now." : "Sign in now."}
           </span>
-        </h1>
+        </p>
       </form>
     </div>
   );

@@ -21,7 +21,6 @@ const MainContainer = () => {
   if (!title || !video) return null;
 
   const filterMovie = title?.find((title) => title.id == video?.id);
-  console.log("Filtered movie:", filterMovie);
 
   const background = video?.results ? video?.results[0] : video?.results[1];
 
@@ -30,7 +29,7 @@ const MainContainer = () => {
   const { key } = background || [];
 
   return (
-    <div>
+    <div className="relative w-full overflow-hidden">
       <MovieTitle original_title={original_title} overview={overview} />
       <MovieBackground videoKey={key} />
     </div>
